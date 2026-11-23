@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Daily Pulse - A modern digital newspaper covering world news, technology, business, sports, and culture.">
+  <title>The Daily Pulse | Independent News & Magazine</title>
+
+  <!-- Google Fonts: Playfair Display (classic newspaper serif) & Inter (clean modern sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&display=swap" rel="stylesheet">
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="home">
+
+  <!-- ========================================================
+       1. TOP BAR & HEADER
+       Contains today's date, edition tag, main newspaper masthead,
+       and the primary navigation menu.
+       ======================================================== -->
+  <header class="site-header">
+    <!-- Top utility bar -->
+    <div class="top-bar">
+      <div class="container top-bar-content">
+        <span class="top-bar-date">Monday, November 23, 2026</span>
+        <span class="top-bar-edition">Global Edition &bull; Vol. XLVIII No. 142</span>
+        <span class="top-bar-weather">New York &bull; 18°C Sunny</span>
+      </div>
+    </div>
+
+    <!-- Newspaper Masthead (Logo & Tagline) -->
+    <div class="container masthead">
+      <div class="masthead-center">
+        <a href="#home" class="logo-link">
+          <h1 class="site-title">The Daily Pulse</h1>
+        </a>
+        <p class="site-tagline">Truth, Independence & Global Perspectives Since 1978</p>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <nav class="main-nav" aria-label="Main Navigation">
+      <div class="container">
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-item active">Home</a></li>
+          <li><a href="#world" class="nav-item">World</a></li>
+          <li><a href="#technology" class="nav-item">Technology</a></li>
+          <li><a href="#business" class="nav-item">Business</a></li>
+          <li><a href="#sports" class="nav-item">Sports</a></li>
+          <li><a href="#entertainment" class="nav-item">Entertainment</a></li>
+          <li><a href="#lifestyle" class="nav-item">Lifestyle</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================================
+       MAIN PAGE CONTAINER
+       ======================================================== -->
+  <main class="container main-wrapper">
+
+    <!-- ======================================================
+         2. HEADLINE STORIES SECTION
+         One large lead story alongside 3 stacked side stories.
+         Layout built entirely with Flexbox.
+         ====================================================== -->
+    <section class="headlines-section" aria-label="Headline Stories">
+      <div class="headlines-container">
+
+        <!-- Main Lead Story (Left Side - Takes ~60% width) -->
+        <article class="lead-story" id="world">
+          <div class="lead-image-wrap">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80" 
+                 alt="Earth seen from orbit with glowing data networks" 
+                 class="lead-image">
+            <span class="category-badge badge-world">World News</span>
+          </div>
+          <div class="lead-content">
+            <h2 class="lead-title">
+              <a href="#latest">Global Climate Accord Reaches Historic Milestone as 140 Nations Sign Clean Energy Pact</a>
+            </h2>
+            <p class="lead-summary">
+              Diplomats and world leaders concluded an intense two-week summit in Geneva today, ratifying an unprecedented global transition timeline that guarantees international funding for developing nations.
+            </p>
+            <div class="article-meta">
+              <span class="meta-author">By <strong>Marcus Chen</strong></span>
+              <span class="meta-separator">&bull;</span>
+              <span class="meta-time">25 mins ago</span>
+              <span class="meta-separator">&bull;</span>
+              <span class="meta-read-time">6 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Secondary Stories Column (Right Side - Takes ~40% width) -->
+        <div class="side-stories">
+
+          <!-- Side Story 1 -->
+          <article class="side-story-item">
+            <div class="side-thumb-wrap">
+              <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=400&q=80" 
+                   alt="Financial stock market trading charts on screen" 
+                   class="side-thumb">
+            </div>
+            <div class="side-story-details">
+              <span class="category-badge badge-business">Business</span>
+              <h3 class="side-title">
+                <a href="#latest">Central Banks Signal Stabilizing Interest Rates After Tech Rally</a>
+              </h3>
+              <span class="meta-time">1 hour ago &bull; 4 min read</span>
+            </div>
+          </article>
+
+          <!-- Side Story 2 -->
+          <article class="side-story-item">
+            <div class="side-thumb-wrap">
+              <img src="https://images.unsplash.com/photo-1508962914676-134849a727f0?auto=format&fit=crop&w=400&q=80" 
+                   alt="Wind turbines against a golden morning sunset" 
+                   class="side-thumb">
+            </div>
+            <div class="side-story-details">
+              <span class="category-badge badge-lifestyle">Lifestyle</span>
+              <h3 class="side-title">
+                <a href="#latest">The Rise of Off-Grid Living: How Solar Technology Powers Remote Towns</a>
+              </h3>
+              <span class="meta-time">2 hours ago &bull; 5 min read</span>
+            </div>
+          </article>
+
+          <!-- Side Story 3 -->
+          <article class="side-story-item">
+            <div class="side-thumb-wrap">
+              <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=400&q=80" 
+                   alt="Illuminated classic cinema theater marquee" 
+                   class="side-thumb">
+            </div>
+            <div class="side-story-details">
+              <span class="category-badge badge-entertainment">Entertainment</span>
+              <h3 class="side-title">
+                <a href="#latest">Venice Film Festival Announces 2026 Golden Lion Nominees</a>
+              </h3>
+              <span class="meta-time">3 hours ago &bull; 3 min read</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         3. CATEGORIES STRIP
+         6 category tags/buttons styled in distinct colors.
+         ====================================================== -->
+    <section class="categories-strip" aria-label="News Topics">
+      <div class="section-header-compact">
+        <h2 class="section-label">Browse Topics</h2>
+        <span class="section-line"></span>
+      </div>
+      <div class="categories-list">
+        <a href="#world" class="category-pill pill-world">
+          <span class="pill-dot"></span> World
+        </a>
+        <a href="#technology" class="category-pill pill-tech">
+          <span class="pill-dot"></span> Technology
+        </a>
+        <a href="#business" class="category-pill pill-business">
+          <span class="pill-dot"></span> Business
+        </a>
+        <a href="#sports" class="category-pill pill-sports">
+          <span class="pill-dot"></span> Sports
+        </a>
+        <a href="#entertainment" class="category-pill pill-entertainment">
+          <span class="pill-dot"></span> Entertainment
+        </a>
+        <a href="#lifestyle" class="category-pill pill-lifestyle">
+          <span class="pill-dot"></span> Lifestyle
+        </a>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         4. FEATURED ARTICLES SECTION
+         3 equal-width article cards built with Flexbox.
+         ====================================================== -->
+    <section class="featured-section" id="technology" aria-label="Featured Articles">
+      <div class="section-header">
+        <h2 class="section-heading">Featured In-Depth Stories</h2>
+        <span class="heading-accent"></span>
+      </div>
+
+      <div class="featured-cards">
+        <!-- Card 1 -->
+        <article class="card">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1477959858617-67f30bc75b82?auto=format&fit=crop&w=700&q=80" 
+                 alt="Modern skyscraper architecture in downtown city" 
+                 class="card-image">
+            <span class="category-badge badge-world">World</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">
+              <a href="#latest">Smart Cities of Tomorrow: How Urban Architecture is Evolving</a>
+            </h3>
+            <p class="card-excerpt">
+              From vertical green forests to AI-regulated traffic systems, discover how megacities are being redesigned for sustainability and human well-being.
+            </p>
+            <div class="card-footer">
+              <div class="card-meta">
+                <span class="meta-author">David Miller</span>
+                <span class="meta-date">Nov 22, 2026</span>
+              </div>
+              <a href="#latest" class="read-more-btn">Read More &rarr;</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=700&q=80" 
+                 alt="Robot interface representing artificial intelligence research" 
+                 class="card-image">
+            <span class="category-badge badge-tech">Technology</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">
+              <a href="#latest">Next-Gen Quantum Processors Shatter Speed Records in Lab Trials</a>
+            </h3>
+            <p class="card-excerpt">
+              Researchers at MIT announce a functional 5,000-qubit prototype that operates at near room temperature, promising a revolution in medical simulations.
+            </p>
+            <div class="card-footer">
+              <div class="card-meta">
+                <span class="meta-author">Dr. Sarah Jenkins</span>
+                <span class="meta-date">Nov 21, 2026</span>
+              </div>
+              <a href="#latest" class="read-more-btn">Read More &rarr;</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=700&q=80" 
+                 alt="Woman meditating in peaceful morning sunlight" 
+                 class="card-image">
+            <span class="category-badge badge-lifestyle">Lifestyle</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">
+              <a href="#latest">The Psychology of Mindful Mornings: Habits of Creative Leaders</a>
+            </h3>
+            <p class="card-excerpt">
+              Neuroscientists break down why the first sixty minutes of your day set your cognitive baseline, and how small rituals foster long-term mental resilience.
+            </p>
+            <div class="card-footer">
+              <div class="card-meta">
+                <span class="meta-author">Elena Vance</span>
+                <span class="meta-date">Nov 20, 2026</span>
+              </div>
+              <a href="#latest" class="read-more-btn">Read More &rarr;</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         5. TWO-COLUMN MAIN LAYOUT (Latest News 70% + Sidebar 30%)
+         Uses Flexbox layout that stacks vertically on mobile screens.
+         ====================================================== -->
+    <div class="two-column-layout" id="latest">
+
+      <!-- LEFT COLUMN: Latest News List (~70% width) -->
+      <section class="main-content-column" id="business" aria-label="Latest News Feed">
+        <div class="section-header">
+          <h2 class="section-heading">Latest News</h2>
+          <span class="heading-accent"></span>
+        </div>
+
+        <div class="news-list">
+
+          <!-- News Item 1 -->
+          <article class="news-list-item">
+            <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=300&q=80" 
+                 alt="Athletes competing on an open running track" 
+                 class="news-thumbnail">
+            <div class="news-list-info">
+              <span class="category-badge badge-sports">Sports</span>
+              <h3 class="news-item-title">
+                <a href="#sports">Championship Finals: Underdog Squad Pulls Off Stunning 94th-Minute Victory</a>
+              </h3>
+              <p class="news-item-snippet">
+                A breathtaking bicycle kick in extra time secured the historic trophy for the first time in thirty-five years.
+              </p>
+              <div class="news-item-meta">
+                <span class="meta-time">45 minutes ago</span>
+                <span class="meta-separator">&bull;</span>
+                <span class="meta-author">By Sports Desk</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- News Item 2 -->
+          <article class="news-list-item">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=300&q=80" 
+                 alt="Green computer matrix code stream on monitor" 
+                 class="news-thumbnail">
+            <div class="news-list-info">
+              <span class="category-badge badge-tech">Technology</span>
+              <h3 class="news-item-title">
+                <a href="#technology">Cybersecurity Consortium Releases Free Open-Source Defense Framework</a>
+              </h3>
+              <p class="news-item-snippet">
+                The new protocol shields small businesses from ransomware attacks without requiring expensive enterprise licenses.
+              </p>
+              <div class="news-item-meta">
+                <span class="meta-time">2 hours ago</span>
+                <span class="meta-separator">&bull;</span>
+                <span class="meta-author">By Dr. Sarah Jenkins</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- News Item 3 -->
+          <article class="news-list-item">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=300&q=80" 
+                 alt="Corporate glass office tower reaching towards sky" 
+                 class="news-thumbnail">
+            <div class="news-list-info">
+              <span class="category-badge badge-business">Business</span>
+              <h3 class="news-item-title">
+                <a href="#business">Global Semiconductor Supply Chain Reaches Full Normalization</a>
+              </h3>
+              <p class="news-item-snippet">
+                Automotive and consumer electronics makers report inventory stability following large manufacturing expansion in Europe.
+              </p>
+              <div class="news-item-meta">
+                <span class="meta-time">3 hours ago</span>
+                <span class="meta-separator">&bull;</span>
+                <span class="meta-author">By Marcus Chen</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- News Item 4 -->
+          <article class="news-list-item">
+            <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=300&q=80" 
+                 alt="Misty mountain valley with evergreen pine forest" 
+                 class="news-thumbnail">
+            <div class="news-list-info">
+              <span class="category-badge badge-world">World</span>
+              <h3 class="news-item-title">
+                <a href="#world">Wildlife Sanctuary Expands by 50,000 Hectares to Protect Endangered Species</a>
+              </h3>
+              <p class="news-item-snippet">
+                Community-led conservation efforts celebrate the return of native bird species after a decade of habitat rehabilitation.
+              </p>
+              <div class="news-item-meta">
+                <span class="meta-time">4 hours ago</span>
+                <span class="meta-separator">&bull;</span>
+                <span class="meta-author">By David Miller</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- News Item 5 -->
+          <article class="news-list-item" id="entertainment">
+            <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=300&q=80" 
+                 alt="Parisian street architecture and sidewalk cafe" 
+                 class="news-thumbnail">
+            <div class="news-list-info">
+              <span class="category-badge badge-entertainment">Entertainment</span>
+              <h3 class="news-item-title">
+                <a href="#entertainment">Art Biennale Explores Intersection of Traditional Crafts and Modern VR</a>
+              </h3>
+              <p class="news-item-snippet">
+                Over 300 international artists exhibit interactive installations celebrating indigenous textiles and digital sculpture.
+              </p>
+              <div class="news-item-meta">
+                <span class="meta-time">6 hours ago</span>
+                <span class="meta-separator">&bull;</span>
+                <span class="meta-author">By Culture Desk</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- News Item 6 -->
+          <article class="news-list-item" id="lifestyle">
+            <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=300&q=80" 
+                 alt="Fresh organic fruits, berries and colorful healthy foods" 
+                 class="news-thumbnail">
+            <div class="news-list-info">
+              <span class="category-badge badge-lifestyle">Lifestyle</span>
+              <h3 class="news-item-title">
+                <a href="#lifestyle">Farm-to-Table Dining: How Urban Rooftop Farming is Reshaping Cuisine</a>
+              </h3>
+              <p class="news-item-snippet">
+                Top chefs partner with city gardeners to bring hyper-local produce straight to restaurant tables within two hours of harvesting.
+              </p>
+              <div class="news-item-meta">
+                <span class="meta-time">8 hours ago</span>
+                <span class="meta-separator">&bull;</span>
+                <span class="meta-author">By Elena Vance</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: Sidebar (~30% width) -->
+      <aside class="sidebar-column" aria-label="Sidebar Content">
+
+        <!-- 1. Search Box (Design Only) -->
+        <div class="sidebar-box">
+          <h3 class="sidebar-heading">Search The Daily Pulse</h3>
+          <form class="search-form" action="#" method="get">
+            <input type="text" 
+                   name="q" 
+                   placeholder="Search news, topics, authors..." 
+                   aria-label="Search query" 
+                   required>
+            <button type="submit" class="search-btn">Search</button>
+          </form>
+        </div>
+
+        <!-- 2. Trending Now (Top-5 Numbered List) -->
+        <div class="sidebar-box">
+          <h3 class="sidebar-heading">Trending Now</h3>
+          <ol class="trending-list">
+            <li class="trending-item">
+              <span class="trending-rank">1</span>
+              <div class="trending-text">
+                <a href="#latest" class="trending-title">Electric Vehicle Battery Breakthrough Promises 1,000km Range</a>
+                <span class="trending-views">142K Reads &bull; Technology</span>
+              </div>
+            </li>
+            <li class="trending-item">
+              <span class="trending-rank">2</span>
+              <div class="trending-text">
+                <a href="#latest" class="trending-title">Stock Markets Hit Fresh All-Time Highs Amid Earnings Surges</a>
+                <span class="trending-views">98K Reads &bull; Business</span>
+              </div>
+            </li>
+            <li class="trending-item">
+              <span class="trending-rank">3</span>
+              <div class="trending-text">
+                <a href="#latest" class="trending-title">Space Agency Confirms Water Reservoirs on Lunar South Pole</a>
+                <span class="trending-views">87K Reads &bull; Science</span>
+              </div>
+            </li>
+            <li class="trending-item">
+              <span class="trending-rank">4</span>
+              <div class="trending-text">
+                <a href="#latest" class="trending-title">Top 10 Budget Travel Destinations for the Upcoming Season</a>
+                <span class="trending-views">64K Reads &bull; Lifestyle</span>
+              </div>
+            </li>
+            <li class="trending-item">
+              <span class="trending-rank">5</span>
+              <div class="trending-text">
+                <a href="#latest" class="trending-title">National League Prepares for Revolutionary Playoff Rule Changes</a>
+                <span class="trending-views">52K Reads &bull; Sports</span>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <!-- 3. About the Editor / Author Box -->
+        <div class="sidebar-box">
+          <h3 class="sidebar-heading">Editor-in-Chief</h3>
+          <div class="editor-card">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" 
+                 alt="Portrait of Elena Vance, Editor-in-Chief" 
+                 class="editor-photo">
+            <h4 class="editor-name">Elena Vance</h4>
+            <span class="editor-role">Chief Editor & Investigative Columnist</span>
+            <p class="editor-bio">
+              With over 15 years in international investigative journalism, Elena oversees editorial direction with a passion for human rights and technological ethics.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4. Newsletter Sign-Up Box (Design Only) -->
+        <div class="sidebar-box newsletter-box">
+          <h3 class="sidebar-heading">The Morning Briefing</h3>
+          <p class="newsletter-desc">
+            Get our hand-curated editorial briefing delivered straight to your inbox every morning at 7:00 AM.
+          </p>
+          <form class="newsletter-form" action="#" method="get">
+            <input type="email" 
+                   placeholder="Enter your email address..." 
+                   aria-label="Email address for newsletter" 
+                   required>
+            <button type="submit" class="newsletter-btn">Subscribe Free</button>
+          </form>
+          <span class="newsletter-disclaimer">Zero spam. Unsubscribe anytime in one click.</span>
+        </div>
+
+        <!-- 5. Follow Us (Social Links) -->
+        <div class="sidebar-box">
+          <h3 class="sidebar-heading">Follow The Daily Pulse</h3>
+          <div class="social-links-list">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-btn social-twitter">
+              <strong>Twitter / X</strong>
+              <span>@DailyPulseNews</span>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-btn social-facebook">
+              <strong>Facebook</strong>
+              <span>/TheDailyPulseOfficial</span>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn social-instagram">
+              <strong>Instagram</strong>
+              <span>@dailypulsemag</span>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn social-linkedin">
+              <strong>LinkedIn</strong>
+              <span>company/the-daily-pulse</span>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn social-youtube">
+              <strong>YouTube</strong>
+              <span>The Daily Pulse Broadcast</span>
+            </a>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+
+    <!-- ======================================================
+         6. AUTHOR INFORMATION SECTION
+         3 author cards with photos, names, specialties, and article counts.
+         ====================================================== -->
+    <section class="authors-section" id="sports" aria-label="Our Contributing Authors">
+      <div class="section-header">
+        <h2 class="section-heading">Our Editorial Team & Authors</h2>
+        <span class="heading-accent"></span>
+      </div>
+
+      <div class="authors-grid">
+
+        <!-- Author Card 1 -->
+        <article class="author-card">
+          <div class="author-image-wrap">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" 
+                 alt="Portrait of Marcus Chen, Senior Foreign Correspondent" 
+                 class="author-photo">
+          </div>
+          <div class="author-details">
+            <h3 class="author-name">Marcus Chen</h3>
+            <span class="author-specialty">World Affairs & Geopolitics</span>
+            <p class="author-summary">
+              Covers global diplomacy, international trade, and conflict resolution across Asia and Europe.
+            </p>
+            <div class="author-stat">
+              <span class="stat-number">142</span> Articles Published
+            </div>
+          </div>
+        </article>
+
+        <!-- Author Card 2 -->
+        <article class="author-card">
+          <div class="author-image-wrap">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80" 
+                 alt="Portrait of Dr. Sarah Jenkins, Technology & Science Editor" 
+                 class="author-photo">
+          </div>
+          <div class="author-details">
+            <h3 class="author-name">Dr. Sarah Jenkins</h3>
+            <span class="author-specialty">Technology & Artificial Intelligence</span>
+            <p class="author-summary">
+              Former robotics researcher turned science writer, dissecting modern computing and space breakthroughs.
+            </p>
+            <div class="author-stat">
+              <span class="stat-number">98</span> Articles Published
+            </div>
+          </div>
+        </article>
+
+        <!-- Author Card 3 -->
+        <article class="author-card">
+          <div class="author-image-wrap">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" 
+                 alt="Portrait of David Miller, Sustainable Urbanism & Economics Writer" 
+                 class="author-photo">
+          </div>
+          <div class="author-details">
+            <h3 class="author-name">David Miller</h3>
+            <span class="author-specialty">Urban Architecture & Climate Economy</span>
+            <p class="author-summary">
+              Examines how metropolitan hubs evolve under renewable energy goals and infrastructure modernization.
+            </p>
+            <div class="author-stat">
+              <span class="stat-number">115</span> Articles Published
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================
+       7. SITE FOOTER
+       Contains publication info, quick navigation links,
+       and copyright notice.
+       ======================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+
+      <!-- Column 1: About the publication -->
+      <div class="footer-col footer-about">
+        <h3 class="footer-title">The Daily Pulse</h3>
+        <p class="footer-text">
+          The Daily Pulse is an independent student-led journalism and news publication dedicated to delivering factual, thoughtful, and verified reporting on global issues, cutting-edge technology, culture, and business.
+        </p>
+        <p class="footer-contact">
+          Email: <a href="mailto:editor@thedailypulse.com">editor@thedailypulse.com</a><br>
+          Editorial Office: 450 Lexington Ave, New York, NY 10017
+        </p>
+      </div>
+
+      <!-- Column 2: Quick Links (Sections) -->
+      <div class="footer-col">
+        <h4 class="footer-subtitle">Sections</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home Edition</a></li>
+          <li><a href="#world">World News</a></li>
+          <li><a href="#technology">Technology & AI</a></li>
+          <li><a href="#business">Economy & Markets</a></li>
+          <li><a href="#sports">Sports Coverage</a></li>
+          <li><a href="#entertainment">Arts & Culture</a></li>
+          <li><a href="#lifestyle">Health & Lifestyle</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Editorial & College Project Info -->
+      <div class="footer-col">
+        <h4 class="footer-subtitle">About This Project</h4>
+        <ul class="footer-links">
+          <li><a href="#latest">Editorial Guidelines</a></li>
+          <li><a href="#latest">Fact-Checking Policy</a></li>
+          <li><a href="#sports">Our Journalists</a></li>
+          <li><a href="#home">Careers & Internships</a></li>
+          <li><a href="#home">Privacy & Terms</a></li>
+        </ul>
+        <p class="project-tag">B.Tech CSE Web Development Project</p>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright Bar -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 The Daily Pulse. All rights reserved. Designed with pure semantic HTML5 &amp; CSS3 Flexbox.</p>
+        <a href="#home" class="back-to-top">Back to Top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

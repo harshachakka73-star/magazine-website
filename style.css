@@ -1,0 +1,1370 @@
+/* ==========================================================================
+   THE DAILY PULSE - MAIN STYLESHEET
+   Techniques: Pure CSS3, Flexbox Layout, CSS Variables, Responsive Media Queries
+   Author: Senior Frontend Developer for First-Year B.Tech CSE Project
+   Note: No JavaScript or CSS Grid is used. Designed for clarity & viva explanation.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS VARIABLES (DESIGN TOKENS)
+   Centralizing colors, fonts, and spacing makes the design consistent
+   and very easy to customize or explain during an exam/viva.
+   -------------------------------------------------------------------------- */
+:root {
+  /* Newspaper Color Palette */
+  --color-primary: #b30000;         /* Editorial Crimson Accent */
+  --color-primary-dark: #800000;    /* Dark Crimson for Hover States */
+  --color-dark: #111111;            /* Deep Black for Headlines */
+  --color-text: #2d3748;            /* Charcoal for Readable Body Text */
+  --color-muted: #6b7280;           /* Soft Grey for Dates, Authors, Meta */
+  --color-border: #e2e8f0;          /* Subtle Border Lines */
+  --color-border-dark: #111111;     /* Classic Newspaper Heavy Divider */
+  --color-bg: #ffffff;              /* Crisp White Base */
+  --color-bg-alt: #f8fafc;          /* Soft Off-White for Card Backgrounds */
+  --color-accent-gold: #b45309;     /* Gold Accent for Highlights */
+
+  /* Category Tag Colors (Distinct Colors for Quick Recognition) */
+  --tag-world: #1e3a8a;             /* Deep Blue */
+  --tag-tech: #0f766e;              /* Teal / Cyan */
+  --tag-business: #047857;          /* Emerald Green */
+  --tag-sports: #c2410c;            /* Rust Orange */
+  --tag-entertainment: #6d28d9;     /* Royal Purple */
+  --tag-lifestyle: #be185d;         /* Rose Pink */
+
+  /* Typography */
+  --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Standard Spacing Scale */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 36px;
+  --spacing-xxl: 48px;
+
+  /* Visual Details */
+  --border-radius: 4px;             /* Slight subtle curves, keeping newspaper feel */
+  --transition-fast: 0.25s ease;    /* Smooth hover animations */
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --box-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* --------------------------------------------------------------------------
+   2. GLOBAL RESET & BASE STYLES
+   Ensures consistent rendering across all web browsers.
+   -------------------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Includes padding and border inside element's total width */
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth; /* Enables smooth animated scrolling for # anchor links */
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Base image styling: guarantees images never overflow their parent container */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Link Resets */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+/* Standard Layout Container (Centers content with a max-width) */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+}
+
+/* --------------------------------------------------------------------------
+   3. SECTION HEADERS & ACCENTS
+   Classic newspaper section headers with an underlined rule.
+   -------------------------------------------------------------------------- */
+.section-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--color-border-dark);
+  padding-bottom: var(--spacing-xs);
+  position: relative;
+}
+
+.section-heading {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  letter-spacing: -0.5px;
+}
+
+.heading-accent {
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-primary);
+  margin-top: var(--spacing-xs);
+}
+
+.section-header-compact {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.section-label {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  white-space: nowrap;
+}
+
+.section-line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+/* Category Badges (Shared across lead, side, and featured cards) */
+.category-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 3px 10px;
+  border-radius: var(--border-radius);
+  color: #ffffff;
+  margin-bottom: var(--spacing-xs);
+  width: fit-content;
+}
+
+.badge-world { background-color: var(--tag-world); }
+.badge-tech { background-color: var(--tag-tech); }
+.badge-business { background-color: var(--tag-business); }
+.badge-sports { background-color: var(--tag-sports); }
+.badge-entertainment { background-color: var(--tag-entertainment); }
+.badge-lifestyle { background-color: var(--tag-lifestyle); }
+
+/* Common Article Meta Information */
+.article-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-top: var(--spacing-sm);
+}
+
+.meta-separator {
+  color: var(--color-border);
+}
+
+/* --------------------------------------------------------------------------
+   4. SITE HEADER, TOP BAR & NAVIGATION
+   -------------------------------------------------------------------------- */
+.site-header {
+  background-color: var(--color-bg);
+  border-bottom: 3px double var(--color-border-dark);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Top Utility Bar */
+.top-bar {
+  background-color: var(--color-bg-alt);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-xs) 0;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.top-bar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Masthead (Logo & Tagline) */
+.masthead {
+  padding: var(--spacing-xl) 0 var(--spacing-lg) 0;
+  text-align: center;
+}
+
+.masthead-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.site-title {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--color-dark);
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  transition: color var(--transition-fast);
+}
+
+.logo-link:hover .site-title {
+  color: var(--color-primary);
+}
+
+.site-tagline {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--color-muted);
+  margin-top: var(--spacing-xs);
+  letter-spacing: 0.5px;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 4px var(--spacing-xl);
+  display: inline-block;
+}
+
+/* Main Navigation Bar (Flexbox) */
+.main-nav {
+  border-top: 1px solid var(--color-border-dark);
+  border-bottom: 1px solid var(--color-border-dark);
+  background-color: var(--color-bg);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: var(--spacing-md) var(--spacing-lg);
+  color: var(--color-dark);
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.nav-item:hover,
+.nav-item.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  background-color: rgba(179, 0, 0, 0.03);
+}
+
+/* --------------------------------------------------------------------------
+   5. HEADLINE STORIES SECTION
+   Desktop: Flex row with 60% lead story and 40% side stories.
+   -------------------------------------------------------------------------- */
+.headlines-section {
+  margin-bottom: var(--spacing-xxl);
+}
+
+.headlines-container {
+  display: flex;
+  gap: var(--spacing-xl);
+  align-items: stretch;
+}
+
+/* Large Lead Story (Left Side) */
+.lead-story {
+  flex: 3; /* Takes 60% of flex width */
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.lead-story:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+.lead-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.lead-image {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+.lead-story:hover .lead-image {
+  transform: scale(1.03);
+}
+
+.lead-image-wrap .category-badge {
+  position: absolute;
+  top: var(--spacing-md);
+  left: var(--spacing-md);
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.lead-content {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.lead-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+.lead-title a:hover {
+  color: var(--color-primary);
+}
+
+.lead-summary {
+  font-size: 1rem;
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+  flex-grow: 1;
+}
+
+/* Stacked Side Stories (Right Side) */
+.side-stories {
+  flex: 2; /* Takes 40% of flex width */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.side-story-item {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.side-story-item:hover {
+  transform: translateX(4px);
+  border-color: var(--color-primary);
+}
+
+.side-thumb-wrap {
+  width: 120px;
+  height: 95px;
+  flex-shrink: 0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.side-thumb {
+  width: 100%;
+  height: 100%;
+}
+
+.side-story-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.side-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-dark);
+  margin-top: 2px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.side-title a:hover {
+  color: var(--color-primary);
+}
+
+.side-story-details .meta-time {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+/* --------------------------------------------------------------------------
+   6. CATEGORIES STRIP
+   6 distinct pills distributed across a flex row.
+   -------------------------------------------------------------------------- */
+.categories-strip {
+  margin-bottom: var(--spacing-xxl);
+  padding: var(--spacing-lg);
+  background-color: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+}
+
+.categories-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  justify-content: space-between;
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 10px 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+  border-radius: 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: transform var(--transition-fast), filter var(--transition-fast);
+}
+
+.category-pill:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  color: #ffffff;
+}
+
+.pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.pill-world { background-color: var(--tag-world); }
+.pill-tech { background-color: var(--tag-tech); }
+.pill-business { background-color: var(--tag-business); }
+.pill-sports { background-color: var(--tag-sports); }
+.pill-entertainment { background-color: var(--tag-entertainment); }
+.pill-lifestyle { background-color: var(--tag-lifestyle); }
+
+/* --------------------------------------------------------------------------
+   7. FEATURED ARTICLES SECTION
+   3 equal cards side-by-side using Flexbox (flex: 1).
+   -------------------------------------------------------------------------- */
+.featured-section {
+  margin-bottom: var(--spacing-xxl);
+}
+
+.featured-cards {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: stretch;
+}
+
+.card {
+  flex: 1; /* Distributes width equally among 3 cards */
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+.card-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 210px;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .card-image {
+  transform: scale(1.05);
+}
+
+.card-image-wrap .category-badge {
+  position: absolute;
+  top: var(--spacing-sm);
+  left: var(--spacing-sm);
+  z-index: 2;
+}
+
+.card-body {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+.card-title a:hover {
+  color: var(--color-primary);
+}
+
+.card-excerpt {
+  font-size: 0.92rem;
+  color: var(--color-text);
+  line-height: 1.55;
+  margin-bottom: var(--spacing-lg);
+  flex-grow: 1;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--spacing-md);
+  margin-top: auto;
+}
+
+.card-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-meta .meta-author {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.card-meta .meta-date {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+.read-more-btn {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  transition: transform var(--transition-fast);
+}
+
+.read-more-btn:hover {
+  transform: translateX(4px);
+  color: var(--color-primary-dark);
+}
+
+/* --------------------------------------------------------------------------
+   8. TWO-COLUMN LAYOUT (Latest News 70% + Sidebar 30%)
+   Flexbox row layout with 70/30 ratio on desktop.
+   -------------------------------------------------------------------------- */
+.two-column-layout {
+  display: flex;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xxl);
+  align-items: flex-start;
+}
+
+/* Main Content Column (70%) */
+.main-content-column {
+  flex: 7; /* ~70% of available space */
+  display: flex;
+  flex-direction: column;
+}
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.news-list-item {
+  display: flex;
+  gap: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+  align-items: flex-start;
+  transition: transform var(--transition-fast);
+}
+
+.news-list-item:hover {
+  transform: translateX(4px);
+}
+
+.news-thumbnail {
+  width: 170px;
+  height: 115px;
+  flex-shrink: 0;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.news-list-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.news-item-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-dark);
+  margin-top: 4px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.news-item-title a:hover {
+  color: var(--color-primary);
+}
+
+.news-item-snippet {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin-bottom: var(--spacing-xs);
+}
+
+.news-item-meta {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+/* --------------------------------------------------------------------------
+   9. SIDEBAR (30%) & SIDEBAR WIDGETS
+   -------------------------------------------------------------------------- */
+.sidebar-column {
+  flex: 3; /* ~30% of available space */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+/* Shared Sidebar Box Styling */
+.sidebar-box {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  box-shadow: var(--box-shadow);
+}
+
+.sidebar-heading {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  border-bottom: 2px solid var(--color-border-dark);
+  padding-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+  position: relative;
+}
+
+.sidebar-heading::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-primary);
+}
+
+/* Search Box Form */
+.search-form {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.search-form input {
+  flex-grow: 1;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.search-form input:focus {
+  border-color: var(--color-primary);
+}
+
+.search-btn {
+  padding: 10px 16px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--color-dark);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.search-btn:hover {
+  background-color: var(--color-primary);
+}
+
+/* Trending Now Numbered List */
+.trending-list {
+  list-style: none;
+  counter-reset: trending-counter;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.trending-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.trending-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.trending-rank {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--color-primary);
+  line-height: 1;
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.trending-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.trending-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  line-height: 1.35;
+  margin-bottom: 2px;
+}
+
+.trending-title:hover {
+  color: var(--color-primary);
+}
+
+.trending-views {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+/* About the Editor Box */
+.editor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.editor-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid var(--color-border);
+  margin-bottom: var(--spacing-sm);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.editor-name {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+.editor-role {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.editor-bio {
+  font-size: 0.85rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+/* Newsletter Subscription Box */
+.newsletter-box {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.newsletter-box .sidebar-heading {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.newsletter-desc {
+  font-size: 0.88rem;
+  color: #d1d5db;
+  line-height: 1.5;
+  margin-bottom: var(--spacing-md);
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.newsletter-form input {
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  border: 1px solid #4b5563;
+  border-radius: var(--border-radius);
+  background-color: #262626;
+  color: #ffffff;
+  outline: none;
+}
+
+.newsletter-form input::placeholder {
+  color: #9ca3af;
+}
+
+.newsletter-form input:focus {
+  border-color: var(--color-primary);
+}
+
+.newsletter-btn {
+  padding: 11px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.newsletter-btn:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.newsletter-disclaimer {
+  display: block;
+  font-size: 0.72rem;
+  color: #9ca3af;
+  margin-top: var(--spacing-xs);
+}
+
+/* Follow Us (Social Links) */
+.social-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.social-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  font-size: 0.85rem;
+  color: var(--color-dark);
+  transition: all var(--transition-fast);
+}
+
+.social-btn span {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.social-btn:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.social-btn:hover span {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* --------------------------------------------------------------------------
+   10. AUTHOR INFORMATION SECTION
+   3 author cards built with Flexbox (flex: 1).
+   -------------------------------------------------------------------------- */
+.authors-section {
+  margin-bottom: var(--spacing-xxl);
+}
+
+.authors-grid {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: stretch;
+}
+
+.author-card {
+  flex: 1; /* 3 cards equal width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.author-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
+  border-color: var(--color-primary);
+}
+
+.author-image-wrap {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: var(--spacing-md);
+  border: 4px solid var(--color-border);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.author-photo {
+  width: 100%;
+  height: 100%;
+}
+
+.author-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.author-name {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 2px;
+}
+
+.author-specialty {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.author-summary {
+  font-size: 0.88rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin-bottom: var(--spacing-md);
+  flex-grow: 1;
+}
+
+.author-stat {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--spacing-sm);
+  width: 100%;
+}
+
+.stat-number {
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+/* --------------------------------------------------------------------------
+   11. SITE FOOTER
+   Classic newspaper dark footer layout using Flexbox.
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: #0f172a;
+  color: #e2e8f0;
+  padding-top: var(--spacing-xxl);
+  border-top: 4px solid var(--color-primary);
+}
+
+.footer-content {
+  display: flex;
+  gap: var(--spacing-xl);
+  padding-bottom: var(--spacing-xxl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-about {
+  flex: 2; /* About column is twice as wide as link lists */
+}
+
+.footer-title {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+}
+
+.footer-contact {
+  font-size: 0.82rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.footer-contact a {
+  color: #38bdf8;
+}
+
+.footer-subtitle {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: var(--spacing-md);
+  position: relative;
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 2px solid var(--color-primary);
+  display: inline-block;
+  width: fit-content;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.footer-links li a {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  transition: all var(--transition-fast);
+}
+
+.footer-links li a:hover {
+  color: #ffffff;
+  padding-left: 6px;
+}
+
+.project-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 6px 12px;
+  border-radius: var(--border-radius);
+  margin-top: var(--spacing-md);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Footer Bottom Bar */
+.footer-bottom {
+  padding: var(--spacing-md) 0;
+  background-color: #020617;
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.footer-bottom-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-to-top {
+  color: #94a3b8;
+  font-weight: 600;
+  transition: color var(--transition-fast);
+}
+
+.back-to-top:hover {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   12. RESPONSIVE MEDIA QUERIES (PURE FLEXBOX)
+   Breakpoints:
+   - Tablet Landscape & Small Laptops: max-width 1024px
+   - Tablets & Phablets: max-width 768px (Sidebar moves below main content!)
+   - Mobile Phones: max-width 480px / 360px
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Medium Screens & Tablets (max-width: 1024px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 1024px) {
+  .site-title {
+    font-size: 2.8rem;
+  }
+
+  .lead-image-wrap {
+    height: 300px;
+  }
+
+  .lead-title {
+    font-size: 1.7rem;
+  }
+
+  /* Two-column layout adjustments */
+  .two-column-layout {
+    gap: var(--spacing-lg);
+  }
+
+  .main-content-column {
+    flex: 6;
+  }
+
+  .sidebar-column {
+    flex: 4;
+  }
+
+  .featured-cards {
+    gap: var(--spacing-md);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Tablet & Mobile Screens (max-width: 768px)
+   CRITICAL REQUIREMENT: Sidebar moves below main content!
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+  /* Header Adjustments */
+  .top-bar-content {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .top-bar-edition {
+    display: none; /* Hide non-critical detail on small screens */
+  }
+
+  .site-title {
+    font-size: 2.2rem;
+  }
+
+  .nav-item {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.82rem;
+  }
+
+  /* Headline stories stack vertically */
+  .headlines-container {
+    flex-direction: column;
+  }
+
+  .lead-story {
+    width: 100%;
+  }
+
+  .lead-image-wrap {
+    height: 240px;
+  }
+
+  .lead-title {
+    font-size: 1.5rem;
+  }
+
+  .side-stories {
+    width: 100%;
+  }
+
+  /* Categories strip wraps cleanly */
+  .categories-list {
+    justify-content: center;
+  }
+
+  /* Featured cards stack into single column */
+  .featured-cards {
+    flex-direction: column;
+  }
+
+  /* CRITICAL: The two-column main area stacks vertically!
+     Sidebar moves directly below latest news */
+  .two-column-layout {
+    flex-direction: column;
+  }
+
+  .main-content-column,
+  .sidebar-column {
+    width: 100%;
+    flex: none; /* Disables flex proportion so each takes full 100% width */
+  }
+
+  /* News List Items adjust thumbnail */
+  .news-list-item {
+    gap: var(--spacing-md);
+  }
+
+  .news-thumbnail {
+    width: 130px;
+    height: 95px;
+  }
+
+  .news-item-title {
+    font-size: 1.05rem;
+  }
+
+  /* Author cards stack vertically */
+  .authors-grid {
+    flex-direction: column;
+  }
+
+  /* Footer columns stack */
+  .footer-content {
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .footer-bottom-inner {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    text-align: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Small Mobile Devices (max-width: 480px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 480px) {
+  .site-title {
+    font-size: 1.8rem;
+  }
+
+  .site-tagline {
+    font-size: 0.8rem;
+    padding: 3px var(--spacing-md);
+  }
+
+  .nav-links {
+    justify-content: flex-start;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 var(--spacing-xs);
+  }
+
+  .nav-item {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  /* News items stack thumbnail on top of text for narrow viewports */
+  .news-list-item {
+    flex-direction: column;
+  }
+
+  .news-thumbnail {
+    width: 100%;
+    height: 180px;
+  }
+
+  .side-story-item {
+    flex-direction: column;
+  }
+
+  .side-thumb-wrap {
+    width: 100%;
+    height: 160px;
+  }
+
+  .search-form {
+    flex-direction: column;
+  }
+
+  .search-btn {
+    width: 100%;
+  }
+
+  .category-pill {
+    font-size: 0.82rem;
+    padding: 8px 14px;
+  }
+}
